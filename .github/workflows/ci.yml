@@ -22,4 +22,6 @@ jobs:
           cache: maven
 
       - name: Compilar e Testar com Maven
-        run: ./mvnw clean package
+        run: |
+          chmod +x mvnw
+          ./mvnw clean package
