@@ -11,16 +11,15 @@ public record PersonagemResponseDTO (
         Integer nivel,
         List<AtributoDTO> atributos
 ){
-    public PersonagemResponseDTO(Personagem personagem, List<AtributoDTO>atributosOriginais) {
+    public PersonagemResponseDTO(Personagem personagem) {
         this(
             personagem.getId(),
             personagem.getNome(),
             personagem.getClasse(),
             personagem.getNivel(),
-            atributosOriginais.stream()
-                        .map(attr -> new AtributoDTO(attr.nome(), attr.valor()))
+            personagem.getAtributos().stream()
+                        .map(a -> new AtributoDTO(a.getNome(), a.getValor(),a.getModificador()))
                         .toList()
         );
     }
-
 }

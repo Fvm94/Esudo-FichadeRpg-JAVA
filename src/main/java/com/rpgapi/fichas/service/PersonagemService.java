@@ -6,6 +6,8 @@ import com.rpgapi.fichas.model.Personagem;
 import com.rpgapi.fichas.repository.PersonagemRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PersonagemService {
 
@@ -24,5 +26,7 @@ public class PersonagemService {
                .orElseThrow(() ->new PersonagemNaoEncontradoException("Ficha de Personagem com o ID " + id + "não existe."));
    }
 
-
+   public List<Personagem>listarTodos (){
+       return repository.findAll();
+   }
 }

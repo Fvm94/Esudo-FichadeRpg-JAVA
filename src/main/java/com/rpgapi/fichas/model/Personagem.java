@@ -2,6 +2,9 @@ package com.rpgapi.fichas.model;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name= "Personagem")
 public class Personagem {
@@ -17,14 +20,18 @@ public class Personagem {
 
     private Integer nivel;
 
+    @ElementCollection
+    private List<Atributo> atributos = new ArrayList<>();
+
     public Personagem() {
 
     }
 
-    public Personagem(String nome, String classe, Integer nivel) {
+    public Personagem(String nome, String classe, Integer nivel, List<Atributo> atributos) {
         this.nome = nome;
         this.classe = classe;
         this.nivel = nivel;
+        this.atributos = atributos;
     }
 
     public Long getId() {
@@ -57,5 +64,9 @@ public class Personagem {
 
     public void setNivel(Integer nivel) {
         this.nivel = nivel;
+    }
+
+    public List<Atributo> getAtributos() {
+        return atributos;
     }
 }
